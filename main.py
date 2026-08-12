@@ -51,16 +51,16 @@ if __name__ == "__main__":
         try:
             with sr.Microphone() as source:
                 print("Listening...")
-                audio = r.listen(source,timeout=9,phrase_time_limit=1)
+                audio = r.listen(source,timeout=9,phrase_time_limit=4)
 
-            command = r.recognize_google(audio)
-            if command.lower() == "friday":
+            word = r.recognize_google(audio)
+            if (word.lower() == "friday"):
                 speak("Yes?")
                 #listen for command
                 with sr.Microphone() as source:
                     print("friday active..")
                     audio = r.listen(source)
-                command = r.recognize_google(audio)
+                    command = r.recognize_google(audio)
 
                 processCommand(command)
 
